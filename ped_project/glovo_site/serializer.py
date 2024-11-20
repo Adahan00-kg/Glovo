@@ -131,11 +131,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 
-
-
-
 class CartSerializer(serializers.ModelSerializer):
-    product = ProductListSerializer()
+    product = ProductListSerializer(many=True)
     class Meta:
         model = Cart
         fields = ['user','product','quantity']

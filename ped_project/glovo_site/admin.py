@@ -18,17 +18,9 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImgInlines]
 
 
-class CompoProductInlines(admin.TabularInline):
-    model = ComboProduct
-    extra = 1
-
-
-class ComboAdmin(admin.ModelAdmin):
-    inlines = [CompoProductInlines]
-
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Store,StoreAdmin)
-admin.site.register(Combo,ComboAdmin)
+
 admin.site.register(Category)
 admin.site.register(UserProfile)
 admin.site.register(Courier)

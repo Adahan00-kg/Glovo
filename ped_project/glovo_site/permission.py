@@ -26,7 +26,6 @@ class OrderOwner(permissions.BasePermission):
             return True
 
 
-class OwnerReview(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
-        if request.user.role == 'владелец магазина':
+
+
 
