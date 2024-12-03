@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # 'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,11 +47,15 @@ INSTALLED_APPS = [
     'rest_framework',
     "phonenumber_field",
     # 'rest_framework_simplejwt.token_blacklist',
+    'django_filters',
+    'rest_framework_swagger',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -116,11 +121,22 @@ LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Bishkek'
 
+# USE_L10N = True
+
 USE_I18N = True
 
 USE_TZ = True
-
-
+#
+#
+# LANGUAGES = (
+#       ('en', 'English'),
+#       ('ru', 'Russian'),
+#       ('ky', 'Kyrgyz'),
+# )
+#
+# MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+#
+# MODELTRANSLATION_LANGUAGES = ('en','ru','ky')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -138,12 +154,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'glovo_site.UserProfile'
 
-#
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     )
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+  # 'DEFAULT_AUTHENTICATION_CLASSES': (
+  #       'rest_framework_simplejwt.authentication.JWTAuthentication',
+  #   )
+}
+
 #
 #
 # SIMPLE_JWT = {
